@@ -53,7 +53,8 @@ button, label.btn { font: inherit; }
 .nav { display: flex; gap: 6px; flex-wrap: wrap; }
 .nav a { color: var(--muted); text-decoration: none; font-size: 13px; padding: 6px 10px; border-radius: 999px; }
 .nav a:hover { color: var(--fg); background: var(--surface-2); }
-.top-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.love { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.love-text { color: var(--muted); font-size: 14px; }
 
 /* like button (GitHub build only; the counter service is unreachable inside claude.ai) */
 .like { position: relative; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 600 14px/1 var(--mono); font-variant-numeric: tabular-nums; -webkit-tap-highlight-color: transparent; user-select: none; }
@@ -326,12 +327,12 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line)
     app.innerHTML =
       '<div class="wrap">' +
       '<header class="top"><div class="brand"><span class="dot"></span>Altera Lost &amp; Found</div>' +
-      '<div class="top-right"><nav class="nav"><a href="#fame">Hall of fame</a><a href="#editions">Editions</a><a href="#reunions">Reunions</a></nav>' +
-      (ENABLE_LIKES ? '<button class="like" id="like-btn" type="button" aria-label="Like this page">' + HEART + '<span class="like-count" data-likes' + (likeCount == null ? " data-empty" : "") + ">" +
-        (likeCount == null ? "Like" : fmt(likeCount)) + "</span></button>" : "") + "</div></header>" +
+      '<nav class="nav"><a href="#fame">Hall of fame</a><a href="#editions">Editions</a><a href="#reunions">Reunions</a></nav></header>' +
 
       '<section class="hero"><span class="eyebrow">Three editions in · Edition 04 on ' + esc(STATE.nextEdition.label) + "</span>" +
       '<h1>Lost <span class="amp">&amp;</span><br>Found</h1>' +
+      (ENABLE_LIKES ? '<div class="love"><button class="like" id="like-btn" type="button" aria-label="Drop a heart">' + HEART + '<span class="like-count" data-likes' + (likeCount == null ? " data-empty" : "") + ">" +
+        (likeCount == null ? "Like" : fmt(likeCount)) + '</span></button><span class="love-text">Drop a heart, or a few, if you like this work.</span></div>' : "") +
       '<p class="lede">Every umbrella, ID card and AirPod Altera has misplaced, the people who keep losing things, and the people who keep finding them.</p>' +
       '<div class="stats"><div class="stat lost"><b>' + lost + "</b><span>items lost</span></div>" +
       '<div class="stat found"><b>' + found + "</b><span>items found</span></div>" +
